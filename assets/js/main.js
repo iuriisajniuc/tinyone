@@ -1,18 +1,17 @@
 $(document).ready(function () {
-
   /* menu */
-  let $btnHamburger = $('.header-navbar__hamburger');
-  let $navbarList = $('.header-navbar__list');
+  let $btnHamburger = $(".header-navbar__hamburger");
+  let $navbarList = $(".header-navbar__list");
   let $window = $(window);
-  let $body = $('body');
+  let $body = $("body");
   let isShow = false;
   let isStop = true;
   /* menu */
 
   /* slider */
-  let $slides = $('.slide');
-  let $indContainer = $('.indicators');
-  let $indItems = $('.indicator');
+  let $slides = $(".slide");
+  let $indContainer = $(".indicators");
+  let $indItems = $(".indicator");
   let currentSlide = 0;
   let playbackStatus = true;
   const carouselInterval = 5000;
@@ -21,29 +20,29 @@ $(document).ready(function () {
 
   /* menu */
   let toggleActive = () => {
-    $btnHamburger.toggleClass('active');
-    isShow ? $body.removeAttr('class') : $body.toggleClass('active');
+    $btnHamburger.toggleClass("active");
+    isShow ? $body.removeAttr("class") : $body.toggleClass("active");
     !isShow && playbackStatus && pauseSlideShow();
     $navbarList.fadeToggle(500);
     isShow = !isShow;
   };
 
   let resetMenu = () => {
-    $btnHamburger.removeClass('active');
-    $body.removeAttr('class');
-    $navbarList.removeAttr('style');
+    $btnHamburger.removeClass("active");
+    $body.removeAttr("class");
+    $navbarList.removeAttr("style");
     isShow = false;
   };
 
-  $btnHamburger.on('click', () => {
+  $btnHamburger.on("click", () => {
     toggleActive();
 
     return false;
   });
 
-  $body.on('click', () => isShow && toggleActive());
+  $body.on("click", () => isShow && toggleActive());
 
-  $window.on('resize', () => {
+  $window.on("resize", () => {
     if ($window.width() > 768 && isStop) {
       isStop = false;
       setTimeout(() => {
@@ -58,14 +57,14 @@ $(document).ready(function () {
   let gotoNSlide = (n) => {
     const i = currentSlide;
 
-    $($slides[currentSlide]).toggleClass('active moved');
-    $($indItems[currentSlide]).toggleClass('active');
+    $($slides[currentSlide]).toggleClass("active moved");
+    $($indItems[currentSlide]).toggleClass("active");
     currentSlide = (n + $slides.length) % $slides.length;
-    $($slides[currentSlide]).toggleClass('active');
-    $($indItems[currentSlide]).toggleClass('active');
+    $($slides[currentSlide]).toggleClass("active");
+    $($indItems[currentSlide]).toggleClass("active");
 
     setTimeout(() => {
-      $($slides[i]).removeClass('moved');
+      $($slides[i]).removeClass("moved");
     }, movedInterval);
   };
 
@@ -82,9 +81,9 @@ $(document).ready(function () {
 
   let clickIndicatorBtn = (e) => {
     pauseSlideShow();
-    gotoNSlide(+e.target.getAttribute('data-slide-to'));
+    gotoNSlide(+e.target.getAttribute("data-slide-to"));
   };
 
-  $indContainer.on('click', '.indicator', clickIndicatorBtn);
+  $indContainer.on("click", ".indicator", clickIndicatorBtn);
   /* slider */
 });

@@ -1,7 +1,12 @@
 .header-slider {
   display: grid;
   overflow: hidden;
-  grid-template-rows: minmax(500px, max-content) 100px;
+  @include md-min {
+    grid-template-rows: minmax(500px, max-content) 100px;
+  }
+  @include md {
+    grid-template-rows: minmax(300px, max-content) 80px;
+  }
 }
 .slides {
   position: relative;
@@ -14,12 +19,32 @@
   left: 0;
   display: grid;
   row-gap: $gap;
+  padding-top: $gap;
   grid-template-rows: minmax(106px, max-content) auto 1fr auto;
   transform: translateX(100vw);
+  transition: transform 0.5s;
+  @include lg-min {
+    column-gap: 180px;
+    grid-template-areas: "ttl img" "stl img" "dsc img" "brd img";
+    grid-template-columns: 1fr auto;
+  }
 
-  column-gap: 180px;
-  grid-template-areas: "ttl img" "stl img" "dsc img" "brd img";
-  grid-template-columns: 1fr auto;
+  @include lg-md {
+    column-gap: 60px;
+    grid-template-areas: "ttl img" "stl img" "dsc img" "brd img";
+    grid-template-columns: 1fr auto;
+  }
+
+  @include md-sm {
+    column-gap: 40px;
+    grid-template-areas: "ttl img" "stl img" "dsc img" "brd img";
+    grid-template-columns: 1fr 1fr;
+  }
+  @include sm {
+    column-gap: 20px;
+    grid-template-areas: "ttl ttl" "stl stl" "dsc img" "brd brd";
+    grid-template-columns: 1fr 1fr;
+  }
 
   &.active {
     position: relative;
@@ -34,21 +59,58 @@
     transform: translateX(-100vw);
   }
   &__title {
+    position: absolute;
     grid-area: ttl;
+    font-size: 2rem;
+    margin: 0;
+    bottom: 0;
   }
+
   &__subtitle {
     grid-area: stl;
+    font-size: 1.25rem;
+    margin: 0;
   }
   &__description {
     grid-area: dsc;
+    margin: 0;
+    color: $color-gray;
+    line-height: 20px;
   }
   &__image {
     grid-area: img;
+    padding-top: 4px;
+    // max-width: 100%;
+    img {
+      // position: relative;
+      max-width: 100%;
+    }
+
+    @include md-min {
+      margin-right: 30px;
+    }
   }
   &__brands {
     display: flex;
     grid-area: brd;
     list-style: none;
+    padding: 0;
+    margin: 17px 0px 4px;
+    @include sm {
+      justify-content: center;
+    }
+    i {
+      font-size: 2.75rem;
+      &:hover {
+        text-shadow: $color-light 1px 0 10px;
+        // box-shadow: ;
+      }
+    }
+    li:not(:last-of-type) {
+      padding: 0;
+      margin: 0;
+      margin-right: 35px;
+    }
   }
 }
 .indicators {
