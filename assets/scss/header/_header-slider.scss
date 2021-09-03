@@ -1,6 +1,7 @@
 .header-slider {
   display: grid;
   overflow: hidden;
+
   @include md-min {
     grid-template-rows: minmax(500px, max-content) 100px;
   }
@@ -17,24 +18,25 @@
   z-index: -1;
   top: 0;
   left: 0;
+
   display: grid;
-  row-gap: $gap;
+
   padding-top: $gap;
-  grid-template-rows: minmax(106px, max-content) auto 1fr auto;
-  transform: translateX(100vw);
+
   transition: transform 0.5s;
+  transform: translateX(100vw);
+
+  grid-template-rows: minmax(106px, max-content) auto 1fr auto;
   @include lg-min {
     column-gap: 180px;
     grid-template-areas: "ttl img" "stl img" "dsc img" "brd img";
     grid-template-columns: 1fr auto;
   }
-
   @include lg-md {
     column-gap: 60px;
     grid-template-areas: "ttl img" "stl img" "dsc img" "brd img";
     grid-template-columns: 1fr auto;
   }
-
   @include md-sm {
     column-gap: 40px;
     grid-template-areas: "ttl img" "stl img" "dsc img" "brd img";
@@ -45,6 +47,7 @@
     grid-template-areas: "ttl ttl" "stl stl" "dsc img" "brd brd";
     grid-template-columns: 1fr 1fr;
   }
+  row-gap: $gap;
 
   &.active {
     position: relative;
@@ -60,42 +63,53 @@
   }
   &__title {
     position: absolute;
-    grid-area: ttl;
-    font-size: 2rem;
-    margin: 0;
     bottom: 0;
+
+    margin: 0;
+
+    font-size: 2rem;
+
+    grid-area: ttl;
   }
 
   &__subtitle {
-    grid-area: stl;
-    font-size: 1.25rem;
     margin: 0;
+
+    font-size: 1.25rem;
+
+    grid-area: stl;
   }
   &__description {
-    grid-area: dsc;
     margin: 0;
+
     color: $color-gray;
+
     line-height: 20px;
+
+    grid-area: dsc;
   }
   &__image {
-    grid-area: img;
     padding-top: 4px;
+
+    grid-area: img;
+    @include md-min {
+      margin-right: 30px;
+    }
     // max-width: 100%;
     img {
       // position: relative;
       max-width: 100%;
     }
-
-    @include md-min {
-      margin-right: 30px;
-    }
   }
   &__brands {
     display: flex;
-    grid-area: brd;
-    list-style: none;
+
+    margin: 17px 0 4px;
     padding: 0;
-    margin: 17px 0px 4px;
+
+    list-style: none;
+
+    grid-area: brd;
     @include sm {
       justify-content: center;
     }
@@ -107,9 +121,9 @@
       }
     }
     li:not(:last-of-type) {
-      padding: 0;
       margin: 0;
       margin-right: 35px;
+      padding: 0;
     }
   }
 }
@@ -117,18 +131,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin: 0;
   padding: 0;
+
   list-style: none;
 }
 .indicator {
-  background-color: $color-light;
   width: 15px;
   height: 15px;
   margin: -9px 3px 0;
-  border-radius: 10px;
+
   cursor: pointer;
+
   opacity: 0.5;
+  border-radius: 10px;
+  background-color: $color-light;
   &.active {
     opacity: 1;
   }

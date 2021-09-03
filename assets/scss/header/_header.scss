@@ -1,31 +1,3 @@
 .header {
   background-color: $color-accent;
-  &-menu {
-    position: relative;
-    padding-top: 30px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    @include md-min {
-      min-height: 140px;
-    }
-    @include md {
-      min-height: 100px;
-    }
-  }
-
-  &-logo {
-    display: flex;
-
-    align-items: center;
-    margin-top: -5px;
-
-    &__image {
-      display: block;
-      margin-right: 10px;
-    }
-    &__title {
-      display: block;
-      font-size: 1.875rem;
-    }
-  }
 }

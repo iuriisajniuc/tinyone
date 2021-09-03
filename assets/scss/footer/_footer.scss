@@ -1,5 +1,6 @@
 .footer {
-  background-color: #000;
+  background-color: #000000;
+
   @include lg-min {
     padding-top: $gap * 4.5;
     padding-bottom: $gap * 7;

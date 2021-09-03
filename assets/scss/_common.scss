@@ -49,13 +49,14 @@ body {
 }
 
 a {
-  text-decoration: none;
-  color: $color-primary;
   transition: color 0.5s;
+  text-decoration: none;
+
+  color: $color-primary;
 }
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding-left: 20px;
   padding-right: 20px;
+  padding-left: 20px;
 }
