@@ -51,4 +51,11 @@ body {
 a {
   text-decoration: none;
   color: $color-primary;
+  transition: color 0.5s;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }

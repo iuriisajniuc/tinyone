@@ -1,0 +1,11 @@
+.footer {
+  background-color: #000;
+  @include lg-min {
+    padding-top: $gap * 4.5;
+    padding-bottom: $gap * 7;
+  }
+  @include lg {
+    padding-top: $gap * 3;
+    padding-bottom: $gap * 4;
+  }
+}
